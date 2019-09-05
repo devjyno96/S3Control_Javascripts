@@ -19,7 +19,7 @@ var s3 = new AWS.S3({
 function listAlbums() {
   s3.listObjects({
     Delimiter: '/'
-  }, function (err, data) { //callback func
+  }, function (err, data) {
     if (err) {
       return alert('There was an error listing your albums: ' + err.message);
     } else {
@@ -35,8 +35,6 @@ function listAlbums() {
           '</span>',
           '</li>'
         ]);
-        //아니 for문도 아닌대 어떻게 모든 사진을 리스트로 보여주지?
-        //콜백함수이기 때문에 리스트하나를 불러올때 마다 실행한다.
       });
       var message = albums.length ?
         getHtml([
@@ -93,7 +91,6 @@ function viewAlbum(albumName) {
   var albumPhotosKey = encodeURIComponent(albumName) + '//';
   s3.listObjects({
     Prefix: albumPhotosKey
-    // prefix는 계층 구분을 위해 사용한다
   }, function (err, data) {
     if (err) {
       return alert('There was an error viewing your album: ' + err.message);
@@ -106,8 +103,6 @@ function viewAlbum(albumName) {
     var photos = data.Contents.map(function (photo) {
       var photoKey = photo.Key;
       var photoUrl = bucketUrl + encodeURIComponent(photoKey);
-      var size = photo.Size;
-      var
       return getHtml([
         '<span>',
         '<div>',
