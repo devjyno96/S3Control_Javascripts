@@ -1,37 +1,55 @@
-# S3Control_Javascripts
+S3Control_Javascripts
+=========================
 
-필요 기능 화면
+#함수명 이름 약속
 
-다운로드
-테스트 안해봄 해봐야됨
+>기능적용단위+   
+>ex)
+>createBoard
+>listBoard
 
-업로드
-업로드 키값은 sha1 시간 포함한 넘버링
+#필요 함수 목록
 
-리스트 - 폴더 내부의 폴더, 파일 리스트 보여주기, 파일와 폴더 구분은 어떻게 하지?
+>###createBorad
+>>게시판 생성 - 최상위 폴더 생성
 
- 
-게시판 생성 - 폴더 생성
+>###listBoard
+>>폴더 목록 조회 함수 만들기
 
-게시판 목록 - 폴더 리스트 함수 만들기
+>###viewBorad
+>>...
+>>
+>###uploadObject
+>>업로드 키값은 sha1 시간 포함한 넘버링
+>>
+>###viewObject
+>>...
+>>
+>###downloadObject
+>>테스트 안해봄 해봐야됨
+>>
+>###listObject
+>>폴더 내부의 폴더, 파일 리스트 보여주기, 파일와 폴더 구분은 어떻게 하지?
+>>
+>##구현해야할 함수
+>>
+>###searchBorad
+>>...
+>###searchObject
+>>...
 
-게시판 관리는 ? s3 폴더로 생성
 
+#화면 순서
 
-
-지금 테스트용 화면 만들자
-
-
-main - 게시판 생성,  게시판 목록 2개 기능 선택
-
-
-1.1 게시판 목록 화면
-전체 게시판 목록 조회(게시판은 s3 폴더명으로 구분), 클릭으로 게시판 입장
-
-1.2 게시판 화면
-게시판 내부의 파일들, 폴더들 조회
-파일 업로드 버튼 존제
-1.3.1 파일 클릭 시 화면
-파일의 메타데이터들, 다운로드 버튼
-
-1.3.2 파일 업로드 완료후 게시판 내부 화면 다시 조회
+>1. index   
+>>버튼을 통해 listBoard 실행    
+>2. 게시판 목록 listBoard.html  
+>>listBoard, createBoard 실행   
+>3. 게시판 생성 화면 createBoard.html   
+>>createBoard 실행 후 그 게시판 내부 화면(viewBoard 화면 실행)
+>4. 게시판 내부 화면 viewBoard.html   
+>>viewBoard, 파일 클릭 시 게시판 내부 파일화면(viewObject)실행
+>5. 파일 화면 viewObject.html   
+>>viewObject, downloadObject 실행   
+>6. 파일 업로드 화면 uploadObject.html   
+>>uploadObject 실행

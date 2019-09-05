@@ -19,7 +19,7 @@ var s3 = new AWS.S3({
 function listAlbums() {
   s3.listObjects({
     Delimiter: '/'
-  }, function (err, data) {
+  }, function (err, data) {ㅔ
     if (err) {
       return alert('There was an error listing your albums: ' + err.message);
     } else {
