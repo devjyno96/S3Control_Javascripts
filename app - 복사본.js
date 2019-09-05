@@ -23,9 +23,6 @@ function listAlbums() {
     if (err) {
       return alert('There was an error listing your albums: ' + err.message);
     } else {
-
-
-
       console.log('앨범', data.CommonPrefixes)
       var albums = data.CommonPrefixes.map(function (commonPrefix) {
         var prefix = commonPrefix.Prefix;
@@ -158,8 +155,7 @@ function addPhoto(albumName) {
   s3.upload({
     Key: photoKey,
     Body: file,
-    ACL: 'public-read',
-    Metadata : {'file_name' : fileName}
+    ACL: 'public-read'
   }, function (err, data) {
     if (err) {
       console.log(err)
