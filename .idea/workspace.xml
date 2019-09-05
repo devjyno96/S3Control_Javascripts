@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e41bf8c5-807d-4e05-b221-b82c94c8994d" name="Default Changelist" comment="">
+    <list default="true" id="e41bf8c5-807d-4e05-b221-b82c94c8994d" name="Default Changelist" comment="read me 갱신">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2. boardList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3. boardDetail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.1 upload.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.2 download.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1. index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1. index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2. createBoard.html" beforeDir="false" afterPath="$PROJECT_DIR$/2. createBoard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,6 +31,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,7 +55,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567663347374</updated>
-      <workItem from="1567670062553" duration="5785000" />
+      <workItem from="1567670062553" duration="6749000" />
+      <workItem from="1567685490174" duration="244000" />
+      <workItem from="1567685754804" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="read me 갱신">
       <created>1567670563939</created>
@@ -77,7 +77,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -15,6 +15,68 @@ var s3 = new AWS.S3({
     Bucket: BucketName
   }
 });
+function createBorad(){
+  albumName = albumName.trim();
+  if (!albumName) {
+    return alert('Album names must contain at least one non-space character.');
+  }
+  if (albumName.indexOf('/') !== -1) {
+    return alert('Album names cannot contain slashes.');
+  }
+  var albumKey = encodeURIComponent(albumName) + '/';
+  s3.headObject({
+    Key: albumKey
+  }, function (err, data) {
+    if (!err) {
+      return alert('Album already exists.');
+    }
+    if (err.code !== 'NotFound') {
+      return alert('There was an error creating your album: ' + err.message);
+    }
+    s3.putObject({
+      Key: albumKey
+    }, function (err, data) {
+      if (err) {
+        return alert('There was an error creating your album: ' + err.message);
+      }
+      alert('Successfully created album.');
+      viewAlbum(albumName);
+    });
+  });
+}
+
+function listBoard(){
+
+}
+
+function viewBorad(){
+
+}
+
+function uploadObject(){
+
+}
+
+function viewObject(){
+
+}
+
+function downloadObject(){
+
+}
+
+function listObject(){
+
+}
+
+
+function searchBorad(){
+
+}
+
+function searchObject(){
+
+}
 
 function listAlbums() {
   s3.listObjects({
@@ -40,11 +102,11 @@ function listAlbums() {
         ]);
       });
       var message = albums.length ?
-        getHtml([
-          '<p>Click on an album name to view it.</p>',
-          '<p>Click on the X to delete the album.</p>'
-        ]) :
-        '<p>You do not have any albums. Please Create album.';
+          getHtml([
+            '<p>Click on an album name to view it.</p>',
+            '<p>Click on the X to delete the album.</p>'
+          ]) :
+          '<p>You do not have any albums. Please Create album.';
       var htmlTemplate = [
         '<h2>Albums</h2>',
         message,
@@ -123,8 +185,8 @@ function viewAlbum(albumName) {
       ]);
     });
     var message = photos.length ?
-      '<p>Click on the X to delete the photo</p>' :
-      '<p>You do not have any photos in this album. Please add photos.</p>';
+        '<p>Click on the X to delete the photo</p>' :
+        '<p>You do not have any photos in this album. Please add photos.</p>';
     var htmlTemplate = [
       '<h2>',
       'Album: ' + albumName,
