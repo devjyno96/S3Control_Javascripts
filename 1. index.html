@@ -4,6 +4,7 @@
 <head>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
   <script src="app.js"></script>
+  <script src = "goPage.js"></script>
 </head>
 
 <body>
@@ -11,8 +12,8 @@
 <p>AWS S3 test page</p>
 <p>index.html</p>
 ----------------------------<br>
-<input type ='button', onclick='createBoard()', value = '생성'>
-<input type ='button', onclick='listBoard()', value = '게시판 조회'>
+<input type ='button', onclick= goPage(createBoardPage) , value = '생성'>
+<input type ='button', onclick= goPage(listBoardPage), value = '게시판 조회'>
 </body>
 
 </html>
