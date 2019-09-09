@@ -10,16 +10,16 @@ S3Control_Javascripts
 
 #필요 함수 목록
 
->###createBorad
+>###createBorad  - 1순위
 >>게시판 생성 - 최상위 폴더 생성
 
 >###listBoard
 >>폴더 목록 조회 함수 만들기
 
->###viewBorad
+>###viewBorad  - 1순위
 >>...
 >>
->###uploadObject
+>###uploadObject  - 1순위
 >>업로드 키값은 sha1 시간 포함한 넘버링
 >>
 >###viewObject
