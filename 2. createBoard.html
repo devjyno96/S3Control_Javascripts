@@ -11,9 +11,10 @@
 <p>AWS S3 test page</p>
 <p> createPage Test</p>
 
+<form NAME="createBoardForm" ACTION = "" METHOD="GET">
 <table border="3">
   <tr>
-    <th>이름</th> <th>작성칸</th> <th>중복검사</th>
+    <th>이름</th> <th><input type = "text" name = "boardName"></th> <th>중복검사 이건 db 뒤질까 s3뒤질까</th>
   </tr>
   <tr>
     <th>주제</th> <th>작성칸</th> <th>test</th>
@@ -22,11 +23,10 @@
     <th>기타</th> <th>넣을만한것</th> <th>말해줘</th>
   </tr>
 
-<button onclick= createBoard(prompt())>
-          Create New Album
-        </button>
-</table>
 
+</table>
+<INPUT TYPE="button" NAME="button" Value="Click" onClick= createBoard(document.createBoardForm.boardName.value.toString())>
+</form>
 </body>
 
 </html>

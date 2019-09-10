@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e41bf8c5-807d-4e05-b221-b82c94c8994d" name="Default Changelist" comment="read me 갱신">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1. index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1. index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2. createBoard.html" beforeDir="false" afterPath="$PROJECT_DIR$/2. createBoard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3. listBoard.html" beforeDir="false" afterPath="$PROJECT_DIR$/3. listBoard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,7 +61,7 @@
       <workItem from="1567685754804" duration="328000" />
       <workItem from="1568004131364" duration="17000" />
       <workItem from="1568004674255" duration="5786000" />
-      <workItem from="1568100097008" duration="4098000" />
+      <workItem from="1568100097008" duration="9857000" />
     </task>
     <task id="LOCAL-00001" summary="read me 갱신">
       <created>1567670563939</created>
