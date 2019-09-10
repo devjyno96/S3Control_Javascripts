@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <script>
-
-  </script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+  <script src="app.js"></script>
+  <script src = "goPage.js"></script>
 </head>
 
 <body>
@@ -22,8 +22,9 @@
     <th>기타</th> <th>넣을만한것</th> <th>말해줘</th>
   </tr>
 
-
-
+<button onclick= createBoard(prompt())>
+          Create New Album
+        </button>
 </table>
 
 </body>

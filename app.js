@@ -15,38 +15,77 @@ var s3 = new AWS.S3({
     Bucket: BucketName
   }
 });
-function createBorad(){
-  albumName = albumName.trim();
-  if (!albumName) {
+
+function getHtml(template) {//javascript에서 바로 html을 출력할 수 있게 해주는 코드
+      return template.join('\n');
+}
+
+function createBoard(boardName){//게시판 이름만 입력하면 생성됨
+  boardName = boardName.trim();
+  if (!boardName) {
     return alert('Album names must contain at least one non-space character.');
   }
-  if (albumName.indexOf('/') !== -1) {
+  if (boardName.indexOf('/') !== -1) {
     return alert('Album names cannot contain slashes.');
   }
-  var albumKey = encodeURIComponent(albumName) + '/';
+  var boardKey = encodeURIComponent(boardName) + '/';
   s3.headObject({
-    Key: albumKey
+    Key: boardKey
   }, function (err, data) {
     if (!err) {
-      return alert('Album already exists.');
+      return alert('Board already exists.');
     }
     if (err.code !== 'NotFound') {
-      return alert('There was an error creating your album: ' + err.message);
+      return alert('There was an error creating your Board: ' + err.message);
     }
     s3.putObject({
-      Key: albumKey
+      Key: boardKey
     }, function (err, data) {
       if (err) {
-        return alert('There was an error creating your album: ' + err.message);
+        return alert('There was an error creating your Board: ' + err.message);
       }
-      alert('Successfully created album.');
-      viewAlbum(albumName);
+      alert('Successfully created Board.');
+      viewBorad(boardName);
     });
   });
 }
 
 function listBoard(){
-
+  s3.listObjects({Delimiter: '/'}, function(err, data) {
+    if (err) {
+      return alert('There was an error listing your albums: ' + err.message);
+    } else {
+      var albums = data.CommonPrefixes.map(function(commonPrefix) {
+        var prefix = commonPrefix.Prefix;
+        var albumName = decodeURIComponent(prefix.replace('/', ''));
+        return getHtml([
+          '<li>',
+            '<span onclick="deleteAlbum(\'' + albumName + '\')">X</span>',
+            '<span onclick="viewAlbum(\'' + albumName + '\')">',
+              albumName,
+            '</span>',
+          '</li>'
+        ]);
+      });
+      var message = albums.length ?
+        getHtml([
+          '<p>Click on an album name to view it.</p>',
+          '<p>Click on the X to delete the album.</p>'
+        ]) :
+        '<p>You do not have any albums. Please Create album.';
+      var htmlTemplate = [
+        '<h2>Albums</h2>',
+        message,
+        '<ul>',
+          getHtml(albums),
+        '</ul>',
+        '<button onclick="createAlbum(prompt(\'Enter Album Name:\'))">',
+          'Create New Album',
+        '</button>'
+      ]
+      document.getElementById('app').innerHTML = getHtml(htmlTemplate);
+    }
+  });
 }
 
 function viewBorad(){
@@ -76,50 +115,6 @@ function searchBorad(){
 
 function searchObject(){
 
-}
-
-function listAlbums() {
-  s3.listObjects({
-    Delimiter: '/'
-  }, function (err, data) {ㅔ
-    if (err) {
-      return alert('There was an error listing your albums: ' + err.message);
-    } else {
-
-
-
-      console.log('앨범', data.CommonPrefixes)
-      var albums = data.CommonPrefixes.map(function (commonPrefix) {
-        var prefix = commonPrefix.Prefix;
-        var albumName = decodeURIComponent(prefix.replace('/', ''));
-        return getHtml([
-          '<li>',
-          '<span onclick="deleteAlbum(\'' + albumName + '\')">X</span>',
-          '<span onclick="viewAlbum(\'' + albumName + '\')">',
-          albumName,
-          '</span>',
-          '</li>'
-        ]);
-      });
-      var message = albums.length ?
-          getHtml([
-            '<p>Click on an album name to view it.</p>',
-            '<p>Click on the X to delete the album.</p>'
-          ]) :
-          '<p>You do not have any albums. Please Create album.';
-      var htmlTemplate = [
-        '<h2>Albums</h2>',
-        message,
-        '<ul>',
-        getHtml(albums),
-        '</ul>',
-        '<button onclick="createAlbum(prompt(\'Enter Album Name:\'))">',
-        'Create New Album',
-        '</button>'
-      ]
-      document.getElementById('app').innerHTML = getHtml(htmlTemplate);
-    }
-  });
 }
 
 function createAlbum(albumName) {
