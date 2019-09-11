@@ -67,12 +67,17 @@ function listBoard(){
           '</li>'
         ]);
       });
-      var message = boards.length ?
+      var message = boards.length ? //길이가 0이면 : 뒤에 문장 실행
         getHtml([
           '<p>Click on an album name to view it.</p>',
           '<p>Click on the X to delete the album.</p>'
         ]) :
-        '<p>You do not have any albums. Please Create album.';
+        getHtml([
+         '<button onclick="createBoard(prompt(\'Enter Board Name:\'))">',
+        'Create New Board',
+        '</button>'
+        ])
+        ;
       var htmlTemplate = [
         '<h2>boards</h2>',
         message,
