@@ -91,7 +91,7 @@ function listBoard(){
 }
 
 function viewBoard(boardName){
-var boardKey = encodeURIComponent(boardName) + '/';
+var boardKey = encodeURIComponent(boardName) + '//';
   s3.listObjects({
     Prefix: boardKey
   }, function (err, data) {
@@ -101,8 +101,7 @@ var boardKey = encodeURIComponent(boardName) + '/';
     // 'this' references the AWS.Response instance that represents the response
     var href = this.request.httpRequest.endpoint.href;
     var bucketUrl = href + BucketName + '/';
-    console.log('게시판', data.Contents)
-
+    console.log('게시판', data.Contents);
     var files = data.Contents.map(function (file) {
       var fileKey = file.Key;
       var fileUrl = bucketUrl + encodeURIComponent(fileKey);
@@ -117,6 +116,13 @@ var boardKey = encodeURIComponent(boardName) + '/';
         '</span>',
         '<span>',
         fileKey.replace(boardKey, ''),
+        '</span>',
+        '<span>',
+        //작업중인 구역 나는 지금 폴더에 점차 들어갈 수 있는 기능을 구현하는 중이다. 그냥 url에 폴더 이름을 더하면 될 줄 알았는데 안된다.
+        //아마 중간에 빈 파일 때문에 안되는거 같다. api중 현재 파일 위치를 받아 올 수 있는 api가 있다면 그 스트링에 폴더명을 붙이면 되지 않을까?
+        '<button id="goFolder" onclick="viewBoard(\'' + boardName +  '\/ '  + fileKey.replace(boardKey, '').slice(0, -1) +  '\')" value = "test"> ',
+        'test',
+        '</button>',
         '</span>',
         '</div>',
         '</span>',
@@ -134,7 +140,7 @@ var boardKey = encodeURIComponent(boardName) + '/';
       getHtml(files),
       '</div>',
       '<input id="fileUpload" type="file">',
-      '<button id="addFile" onclick="uploadObject(\'' + boardName + '\')">',
+      '<button id="addFile" onclick="uploadObject(\'' + boardName + '\' )">',
       'Upload File',
       '</button>',
       '<button onclick="listBoard()">',
