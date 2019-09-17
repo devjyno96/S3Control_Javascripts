@@ -146,6 +146,7 @@ var boardKey = encodeURIComponent(boardName) + '/';
 }
 
 function uploadObject(boardName){
+
     var files = document.getElementById('fileUpload').files;
       if (!files.length) {//파일 갯수가 0이면 밑에 알람 발생
         return alert('Please choose a file to upload first.');
