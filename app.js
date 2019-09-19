@@ -112,6 +112,8 @@ var boardKey = encodeURIComponent(boardName) + '//';
         '<a href =', fileUrl, '>',
         'test',
         '</a>',
+        '<button onclick = "deleteObject(\'' + boardName + "','" + fileKey + '\')">',
+        'delete',
         '</button>',
         '</span>',
         '<span>',
@@ -191,15 +193,15 @@ function searchObject(){
 
 }
 
-function deletePhoto(albumName, photoKey) {
+function deleteObject(boardName, fileKey) {
   s3.deleteObject({
-    Key: photoKey
+    Key: fileKey
   }, function (err, data) {
     if (err) {
-      return alert('There was an error deleting your photo: ', err.message);
+      return alert('There was an error deleting your photo: ' + err.message);
     }
-    alert('Successfully deleted photo.');
-    viewAlbum(albumName);
+    alert('Successfully deleted file.');
+    viewBoard(boardName);
   });
 }
 
