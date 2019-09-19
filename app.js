@@ -162,7 +162,7 @@ function uploadObject(boardName){
       var boardKey = encodeURIComponent(boardName) + '//';
 
       var fileKey = boardKey + fileName;
-      s3.upload({
+      s3.putObject({
         Key: fileKey,
         Body: file,
         ACL: 'public-read',
