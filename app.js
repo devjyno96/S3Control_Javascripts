@@ -106,26 +106,19 @@ var boardKey = encodeURIComponent(boardName) + '//';
       var fileKey = file.Key;
       var fileUrl = bucketUrl + encodeURIComponent(fileKey);
       return getHtml([
+
+        '<div>',
         '<span>',
-        '<div>',
-        '<img style="width:128px;height:128px;" src="' + fileUrl + '"/>',
-        '</div>',
-        '<div>',
-        '<span onclick="downloadObject(\'' + boardName + "','" + fileKey + '\')">',
-        'X',
+        '<a href =', fileUrl, '>',
+        'test',
+        '</a>',
+        '</button>',
         '</span>',
         '<span>',
         fileKey.replace(boardKey, ''),
         '</span>',
-        '<span>',
-        //작업중인 구역 나는 지금 폴더에 점차 들어갈 수 있는 기능을 구현하는 중이다. 그냥 url에 폴더 이름을 더하면 될 줄 알았는데 안된다.
-        //아마 중간에 빈 파일 때문에 안되는거 같다. api중 현재 파일 위치를 받아 올 수 있는 api가 있다면 그 스트링에 폴더명을 붙이면 되지 않을까?
-        '<button id="goFolder" onclick="viewBoard(\'' + boardKey   +fileKey.replace(boardKey, '').slice(0, -1) +  '\')" value = "test"> ',
-        'test',
-        '</button>',
         '</span>',
         '</div>',
-        '</span>',
       ]);
     });
     var message = files.length ?
@@ -181,8 +174,8 @@ function viewObject(){
 
 }
 
-function downloadObject(){
-
+function downloadObject(url){
+  document.location.href = String(url);
 }
 
 function listObject(){
@@ -196,32 +189,6 @@ function searchBorad(){
 
 function searchObject(){
 
-}
-
-
-function addPhoto(albumName) {
-  var files = document.getElementById('photoupload').files;
-  if (!files.length) {
-    return alert('Please choose a file to upload first.');
-  }
-  var file = files[0];
-  var fileName = file.name;
-  var albumPhotosKey = encodeURIComponent(albumName) + '//';
-
-  var photoKey = albumPhotosKey + fileName;
-  s3.upload({
-    Key: photoKey,
-    Body: file,
-    ACL: 'public-read',
-    Metadata : {'file_name' : fileName}
-  }, function (err, data) {
-    if (err) {
-      console.log(err)
-      return alert('There was an error uploading your photo: ', err.message);
-    }
-    alert('Successfully uploaded photo.');
-    viewAlbum(albumName);
-  });
 }
 
 function deletePhoto(albumName, photoKey) {
