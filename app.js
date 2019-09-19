@@ -232,3 +232,31 @@ function deleteAlbum(albumName) {
     });
   });
 }
+
+function deleteBoard(boardName) {
+  var boardKey = encodeURIComponent(boardName) + '/';
+  s3.listObjects({
+    Prefix: boardKey
+  }, function (err, data) {
+    if (err) {
+      return alert('There was an error deleting your board: ' +  err.message);
+    }
+    var objects = data.Contents.map(function (object) {
+      return {
+        Key: object.Key
+      };
+    });
+    s3.deleteObjects({
+      Delete: {
+        Objects: objects,
+        Quiet: true
+      }
+    }, function (err, data) {
+      if (err) {
+        return alert('There was an error deleting your album: ' + err.message);
+      }
+      alert('Successfully deleted board.');
+      listAlbums();
+    });
+  });
+}
